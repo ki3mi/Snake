@@ -27,7 +27,7 @@ cabeza.direction = "stop"
 #comida
 comida = turtle.Turtle()
 comida.speed(0)
-comida.shape("circle")
+comida.shape("square")
 comida.color("red")
 comida.penup()
 comida.goto(0,100)
@@ -45,13 +45,17 @@ texto.goto(0,260)
 texto.write("Score: 0   High Score: 0",align="center", font=("Courier",24, "normal"))
 #funciones
 def arriba():
-    cabeza.direction = "up"
+    if cabeza.direction != "down":
+        cabeza.direction = "up"
 def abajo():
-    cabeza.direction = "down"
+    if cabeza.direction != "up":
+        cabeza.direction = "down"
 def izquierda():
-    cabeza.direction = "left"
+    if cabeza.direction != "right":
+        cabeza.direction = "left"
 def derecha():
-    cabeza.direction = "right"
+    if cabeza.direction != "left":
+        cabeza.direction = "right"
 
 def mov():
     if cabeza.direction == "up":
@@ -68,10 +72,10 @@ def mov():
         cabeza.setx(x + 20)
 #teclado
 ventana.listen()
-ventana.onkeypress(arriba, "Up")
-ventana.onkeypress(abajo, "Down")
-ventana.onkeypress(izquierda, "Left")
-ventana.onkeypress(derecha, "Right")
+ventana.onkeypress(arriba, "w")
+ventana.onkeypress(abajo, "s")
+ventana.onkeypress(izquierda, "a")
+ventana.onkeypress(derecha, "d")
 
 while True:
     ventana.update()
